@@ -1,27 +1,21 @@
-import { useState } from 'react';
 import './App.css';
-import Form from './components/Form';
-import TodoList from './components/TodoList';
+import LandingPage from './LandingPage';
+import TodoView from './TodoView';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
-  const [inputText, setInputText] = useState("");
-  const [todos, setTodos] = useState([]);
 
   return (
     <div className="App">
       <header>
         <h1>Todo list</h1>
       </header>
-      <div className="container">
-        <Form 
-          inputText={inputText} 
-          setInputText={setInputText} 
-          todos={todos} 
-          setTodos={setTodos} 
-        />
-        <hr />
-        <TodoList setTodos={setTodos} todos={todos} />
-      </div>
+      <Router>
+        <Switch>
+          <Route component={LandingPage} exact path="/" />
+          <Route exact component={TodoView} path="/todo/:id" />
+        </Switch>
+      </Router>
     </div>
   );
 }

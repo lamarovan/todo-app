@@ -13,7 +13,7 @@ function Form({ inputText, setInputText, todos, setTodos }) {
     if(inputText) {
       setTodos([
         ...todos, 
-        { text: inputText, completed: false, id: Math.random() * 100 }
+        { userId:1, title: inputText, completed: false, id: Math.random() * 100 }
       ]);
       setInputText("");
     }
